@@ -4,19 +4,18 @@ import com.todocode.envios.dto.EnvioDTO;
 import com.todocode.envios.mapper.EnvioMapper;
 import com.todocode.envios.model.Envio;
 import com.todocode.envios.repository.EnvioRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class EnvioService implements iEnvioService {
-    @Autowired
-    private EnvioRepository envioRepository;
+    private final EnvioRepository envioRepository;
+
+    public EnvioService(EnvioRepository envioRepository) {
+        this.envioRepository = envioRepository;
+    }
 
     @Override
     public EnvioDTO getEnvio(Long id_envio) {

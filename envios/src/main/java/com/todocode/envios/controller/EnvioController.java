@@ -3,16 +3,19 @@ package com.todocode.envios.controller;
 import com.todocode.envios.dto.EnvioDTO;
 import com.todocode.envios.model.Envio;
 import com.todocode.envios.service.EnvioService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/envios")
 public class EnvioController {
-    @Autowired
-    private EnvioService envioService;
+
+    private final EnvioService envioService;
+
+    public EnvioController(EnvioService envioService) {
+        this.envioService = envioService;
+    }
 
     //GET envio by id
     @GetMapping("/{id_envio}")
